@@ -4,6 +4,7 @@ import com.example.jpa_string_boot_2.answer.Answer;
 import com.example.jpa_string_boot_2.answer.AnswerRepository;
 import com.example.jpa_string_boot_2.question.Question;
 import com.example.jpa_string_boot_2.question.QuestionRepository;
+import com.example.jpa_string_boot_2.question.QuestionService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,5 +122,16 @@ class JpaStringBoot2ApplicationTests {
 
 		assertEquals(1, answerList.size());
 		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+	}
+
+	@Autowired
+	QuestionService questionService;
+	@Test
+	void test12(){
+		for (int i = 0; i <= 300; i++){
+			String subject = String.format("테스트 데이터입니다 : [%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject, content);
+		}
 	}
 }

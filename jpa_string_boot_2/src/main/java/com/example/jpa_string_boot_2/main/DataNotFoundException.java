@@ -1,4 +1,4 @@
-package com.example.jpa_string_boot_2;
+package com.example.jpa_string_boot_2.main;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
