@@ -1,9 +1,13 @@
 package com.example.jpa_string_boot_2.question;
 
+import com.example.jpa_string_boot_2.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import java.util.List;
+import java.util.zip.DataFormatException;
 
 @RequiredArgsConstructor
 @Service
@@ -13,4 +17,14 @@ public class QuestionService {
     public List<Question> getlist(){
         return this.questionRepository.findAll();
     }
+
+    public Question getQuestion(Integer id){
+        Optional<Question> op = this.questionRepository.findById(id);
+        if(op.isPresent()){
+            return op.get();
+        } else {
+            throw new DataNotFoundException("question not found");
+        }
+    }
+
 }
