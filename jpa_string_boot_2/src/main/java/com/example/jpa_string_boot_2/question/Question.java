@@ -2,6 +2,7 @@ package com.example.jpa_string_boot_2.question;
 
 
 import com.example.jpa_string_boot_2.answer.Answer;
+import com.example.jpa_string_boot_2.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,4 +30,7 @@ public class Question {
     // cascade : 질문과 댓글은 OneToMany 관계이다. Question 하나가 삭제되면 그에 해당하는 댓글전체가 삭제하도록 한다.(CascadeType.REMOVE)
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
 }

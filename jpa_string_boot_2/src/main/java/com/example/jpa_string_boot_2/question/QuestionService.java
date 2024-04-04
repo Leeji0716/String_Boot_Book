@@ -1,6 +1,7 @@
 package com.example.jpa_string_boot_2.question;
 
 import com.example.jpa_string_boot_2.main.DataNotFoundException;
+import com.example.jpa_string_boot_2.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,12 +36,12 @@ public class QuestionService {
         }
     }
 
-    public void create(String subject, String content){
+    public void create(String subject, String content, SiteUser user){
         Question question = new Question();
         question.setSubject(subject);
         question.setContent(content);
         question.setCreateDate(LocalDateTime.now());
-
+        question.setAuthor(user);
         questionRepository.save(question);
     }
 
