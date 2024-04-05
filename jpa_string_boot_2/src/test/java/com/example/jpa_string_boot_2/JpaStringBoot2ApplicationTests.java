@@ -123,15 +123,14 @@ class JpaStringBoot2ApplicationTests {
 		assertEquals(1, answerList.size());
 		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 	}
-
 	@Autowired
 	QuestionService questionService;
 	@Test
-	void test12(){
-		for (int i = 0; i <= 300; i++){
-			String subject = String.format("테스트 데이터입니다 : [%03d]", i);
+	void testJpa() {
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
 			String content = "내용무";
-			this.questionService.create(subject, content);
+			this.questionService.create(subject, content, null);
 		}
 	}
 }
